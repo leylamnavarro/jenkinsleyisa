@@ -11,5 +11,5 @@ resource "aws_instance" "public_instance" {
     Name = var.name_tag,
   }
   
-  key_name = aws_key_pair.autodeploy.key_name  # Link the key pair to the instance
-}
+  #key_name = aws_key_pair.autodeploy.key_name  # Link the key pair to the instance
+#}
