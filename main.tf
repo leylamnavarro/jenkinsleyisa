@@ -16,7 +16,7 @@ resource "aws_instance" "public_instance" {
 #creating a security group with terraform code that allows ssh access to only the members of my teams public IP’s
 resource "aws_security_group" "allow_tls" {
   name        = "allow_tls"
-  description = "configure instance so members can login via ssh"
+  description = "Allow TLS inbound traffic"
   vpc_id      = aws_vpc.main.id
 
   ingress {
