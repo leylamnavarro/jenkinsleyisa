@@ -15,8 +15,8 @@ resource "aws_instance" "public_instance" {
 }
 #creating a security group with terraform code that allows ssh access to only the members of my teams public IP’s
 resource "aws_security_group" "allow_tls" {
-  name        = "allow_tls"
-  description = "Allow TLS inbound traffic"
+  name        = "allow_ssh"
+  description = "Allow ssh inbound traffic"
   vpc_id      = aws_vpc.main.id
 
   ingress {
@@ -24,19 +24,19 @@ resource "aws_security_group" "allow_tls" {
     from_port        = 22
     to_port          = 22
     protocol         = "tcp"
-    cidr_blocks      = [aws_vpc.main.cidr_block]
-    #ipv6_cidr_blocks = [aws_vpc.main.ipv6_cidr_block]
+    cidr_blocks      = ["71.202.208.227"], ["76.210.139.68”]
+    
   }
 
   egress {
     from_port        = 22
     to_port          = 22
     protocol         = "-1"
-    cidr_blocks      = ["71.202.208.227"], ["76.210.139.68”]
-    #ipv6_cidr_blocks = ["::/0"]
+    cidr_blocks      = ["0.0.0.0/0"]
+   
   }
 
   tags = {
-    Name = "allow_tls"
+    Name = "allow_ssh"
   }
 }
