@@ -17,7 +17,7 @@ resource "aws_instance" "public_instance" {
 resource "aws_security_group" "allow_ssh" {
   name        = "allow_ssh"
   description = "Allow ssh inbound traffic"
-  vpc_id      = "${aws_vpc.terraform-elb.id}"
+  vpc_id      = "${aws_vpc.main.id}"
 
   ingress {
     description      = "Ssh from VPC"
