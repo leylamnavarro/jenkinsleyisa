@@ -6,8 +6,8 @@ resource "aws_key_pair" "autodeploy" {
 resource "aws_instance" "public_instance" {
   ami           = var.ami
   instance_type = var.instance_type
-key_name aws_key_pair.autodeploy.key_name
-vpc_security_group_id = [aws_security_group.allow_ssh.id]
+  key_name aws_key_pair.autodeploy.key_name
+  vpc_security_group_id = [aws_security_group.allow_ssh.id]
 
   tags = {
     Name = var.name_tag,
