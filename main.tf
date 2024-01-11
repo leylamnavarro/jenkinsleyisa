@@ -17,20 +17,20 @@ resource "aws_instance" "public_instance" {
 resource "aws_security_group" "allow_ssh" {
   name        = "allow_ssh"
   description = "Allow ssh inbound traffic"
-  vpc_id      = vpc-0eeda1b52f1b8b78a
+  vpc_id      = vpc-0e0aaf1803f4e9712
 
   ingress {
     description      = "Ssh from VPC"
     from_port        = 22
     to_port          = 22
     protocol         = "tcp"
-    cidr_blocks      = ["71.202.208.227", "76.210.139.68"]
+    cidr_blocks      = ["96.90.192.54/32", "76.210.139.68/32"]
     
   }
 
   egress {
-    from_port        = 22
-    to_port          = 22
+    from_port        = 0
+    to_port          = 0
     protocol         = "-1"
     cidr_blocks      = ["0.0.0.0/0"]
    
