@@ -1,5 +1,5 @@
 resource "aws_key_pair" "autodeploy" {
-  ##key_name   = "autodeploy"  # Set a unique name for your key pair
+  #key_name   = "autodeploy"  # Set a unique name for your key pair
   public_key = file("/var/jenkins_home/.ssh/id_rsa.pub")
 }
 
@@ -13,7 +13,7 @@ vpc_security_group_id = [aws_security_group.allow_ssh.id]
     Name = var.name_tag,
   }
   
-  key_name = aws_key_pair.autodeploy.key_name  # Link the key pair to the instance
+  #key_name = aws_key_pair.autodeploy.key_name  # Link the key pair to the instance
 }
 #creating a security group with terraform code that allows ssh access to only the members of my teams public IP’s
 resource "aws_security_group" "allow_ssh" {
