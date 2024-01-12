@@ -61,5 +61,5 @@ resource "aws_instance" "web" {
 
 resource "aws_ebs_volume" "example" {
   availability_zone = "us-east-1a"
-  size              = 1
+  size              = 10
 }
