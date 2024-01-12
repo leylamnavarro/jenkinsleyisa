@@ -43,7 +43,7 @@ resource "aws_security_group" "allow_ssh" {
   }
 }
 #adding an additional volume to my instance with terraform
-resource "aws_volume_attachment" "purpleteam" {
+resource "aws_volume_attachment" "purple_team" {
   device_name = "/dev/sdh"
   volume_id   = "avol-0e5ac155eba81061e"
   instance_id = "i-04b9517e41f31df0a"
@@ -51,7 +51,7 @@ resource "aws_volume_attachment" "purpleteam" {
 
 resource "aws_instance" "web" {
   ami               = "ami-0c7217cdde317cfec"
-  availability_zone = "us-east-1"
+  availability_zone = "us-east-1a"
   instance_type     = "t2.micro"
 
   tags = {
@@ -60,6 +60,6 @@ resource "aws_instance" "web" {
 }
 
 resource "aws_ebs_volume" "example" {
-  availability_zone = "us-east-1"
+  availability_zone = "us-east-1a"
   size              = 1
 }
