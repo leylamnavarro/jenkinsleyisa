@@ -63,3 +63,12 @@ resource "aws_ebs_volume" "example" {
   availability_zone = "us-east-1a"
   size              = 10
 }
+
+#creating vpc 
+resource "aws_vpc" "main" {
+  cidr_block = "10.10.10.0/24"
+
+
+tags = {
+  Name = "Ley Isa"
+}
