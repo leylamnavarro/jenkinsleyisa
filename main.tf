@@ -72,3 +72,4 @@ resource "aws_vpc" "main" {
 tags = {
   Name = "Ley Isa"
 }
+}
