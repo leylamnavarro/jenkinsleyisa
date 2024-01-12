@@ -45,7 +45,7 @@ resource "aws_security_group" "allow_ssh" {
 #adding an additional volume to my instance with terraform
 resource "aws_volume_attachment" "purple_team" {
   device_name = "/dev/sdh"
-  volume_id   = "avol-0e5ac155eba81061e"
+  volume_id   = aws_ebs_volume.example.id
   instance_id = "i-04b9517e41f31df0a"
 }
 
