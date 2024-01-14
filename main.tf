@@ -57,3 +57,12 @@ resource "aws_volume_attachment" "ebs" {
   volume_id   = aws_ebs_volume.add_disk.id
   instance_id = aws_instance.public_instance.id
 }
+
+#creating a VPC with terraform code
+resource "aws_vpc" "main" {
+ cidr_block = "10.10.10.0/24"
+ 
+ tags = {
+   Name = "Isa Ley vpc"
+ }
+}
