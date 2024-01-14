@@ -43,25 +43,17 @@ resource "aws_security_group" "allow_ssh" {
   }
 }
 #adding an additional volume to my instance with terraform
-resource "aws_volume_attachment" "purple_team" {
-  device_name = "/dev/sdh"
-  volume_id   = aws_ebs_volume.example.id
-  instance_id = "i-04b9517e41f31df0a"
-}
-
-
-
-resource "aws_ebs_volume" "example" {
-  availability_zone = "us-east-1a"
+#create the EBS volume
+resource "aws_ebs_volume" "add_disk" {
+  availability_zone = aws_instance.public_instance.availability_zone
   size              = 10
+  tags = {
+    Name = "My Volume"
+  }
 }
-
-#creating vpc 
-resource "aws_vpc" "main" {
-  cidr_block = "10.10.10.0/24"
-
-
-tags = {
-  Name = "Ley Isa"
-}
+#adding additional EBS volume to EC2 instance using terraform
+resource "aws_volume_attachment" "ebs" {
+  device_name = "/dev/sdh"
+  volume_id   = aws_ebs_volume.add_disk.id
+  instance_id = aws_instance.public_instance.id
 }
